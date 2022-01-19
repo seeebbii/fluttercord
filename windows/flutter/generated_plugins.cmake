@@ -3,6 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  url_launcher_windows
+  zego_express_engine
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)

@@ -15,26 +15,25 @@ import io.flutter.plugin.common.MethodChannel;
 
 public class MainActivity extends FlutterActivity {
     private Intent serviceIntent;
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        new MethodChannel(getFlutterEngine().getDartExecutor().getBinaryMessenger(), "fluttercord")
+//        .setMethodCallHandler((call, result) -> {
+//            if(call.method.equals("startService")){
+//                Log.d("RESULT", result.toString());
+//                startService();
+//            }
+//        });
+//    }
 
 
-        new MethodChannel(getFlutterEngine().getDartExecutor().getBinaryMessenger(), "fluttercord")
-        .setMethodCallHandler((call, result) -> {
-            if(call.method.equals("startService")){
-                Log.d("RESULT", result.toString());
-                startService();
-            }
-        });
 
 
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-//            startForegroundService(new Intent(this, MyService.class));
-//        }else{
-//            startService(new Intent(this, MyService.class));
-//        }
-    }
+
+
+
 
     private void startService(){
         serviceIntent = new Intent(this, MyService.class);
@@ -59,3 +58,9 @@ public class MainActivity extends FlutterActivity {
         super.onDestroy();
     }
 }
+
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//            startForegroundService(new Intent(this, MyService.class));
+//        }else{
+//            startService(new Intent(this, MyService.class));
+//        }

@@ -15,5 +15,30 @@ import io.flutter.embedding.engine.FlutterEngine;
 public final class GeneratedPluginRegistrant {
   private static final String TAG = "GeneratedPluginRegistrant";
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+    try {
+      flutterEngine.getPlugins().add(new im.zego.media_projection_creator.MediaProjectionCreatorPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin media_projection_creator, im.zego.media_projection_creator.MediaProjectionCreatorPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.baseflow.permissionhandler.PermissionHandlerPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin permission_handler, com.baseflow.permissionhandler.PermissionHandlerPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin shared_preferences_android, io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new io.flutter.plugins.urllauncher.UrlLauncherPlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin url_launcher_android, io.flutter.plugins.urllauncher.UrlLauncherPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new im.zego.zego_express_engine.ZegoExpressEnginePlugin());
+    } catch(Exception e) {
+      Log.e(TAG, "Error registering plugin zego_express_engine, im.zego.zego_express_engine.ZegoExpressEnginePlugin", e);
+    }
   }
 }
