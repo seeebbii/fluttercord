@@ -11,17 +11,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
-import 'package:media_projection_creator/media_projection_creator.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:screenshot/screenshot.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'package:tflite/tflite.dart';
 import 'config/flutter_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Get.put(ZegoEngineController());
-
   runApp(
     MyApp(),
   );
@@ -39,10 +34,14 @@ class _MyAppState extends State<MyApp>{
 
   @override
   void initState() {
-
+    initTensorModel();
     super.initState();
   }
 
+  Future<void> initTensorModel() async {
+    await Tflite.loadModel(model: 'assets/model/model_quant.tflite', labels: 'assets/model/labels.txt')
+        .then((value) => print("Model loaded status: $value"));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,15 +54,22 @@ class _MyAppState extends State<MyApp>{
           ),
           body: Center(
             child: Column(
-              children: const [
-                ElevatedButton(
+              children: [
+                const ElevatedButton(
                   onPressed: FlutterService.startService,
                   child: Text("Start Service"),
                 ),
-                SizedBox(height: 25,),
-                ElevatedButton(
+                const SizedBox(height: 25,),
+                const ElevatedButton(
                   onPressed: FlutterService.stopService,
                   child:  Text("Stop Service"),
+                ),
+                const SizedBox(height: 25,),
+                ElevatedButton(
+                  onPressed: ()async{
+
+                  },
+                  child:  const Text("Image Picker"),
                 ),
               ],
             ),
