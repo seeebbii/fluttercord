@@ -38,6 +38,9 @@ class _MyAppState extends State<MyApp>{
     super.initState();
   }
 
+  final _imagePicker = ImagePicker();
+
+
   Future<void> initTensorModel() async {
     await Tflite.loadModel(model: 'assets/model/model_quant.tflite', labels: 'assets/model/labels.txt')
         .then((value) => print("Model loaded status: $value"));
@@ -67,7 +70,8 @@ class _MyAppState extends State<MyApp>{
                 const SizedBox(height: 25,),
                 ElevatedButton(
                   onPressed: ()async{
-
+                    final images = await _imagePicker.pickImage(source: ImageSource.gallery);
+                    print(images);
                   },
                   child:  const Text("Image Picker"),
                 ),
